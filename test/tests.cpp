@@ -1,4 +1,4 @@
-// Copyright 2024 Stepan Morgachev
+// Copyright 2022 UNN-CS
 #include <gtest/gtest.h>
 #include "tasks.h"
 #include "circle.h"

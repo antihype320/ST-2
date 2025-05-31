@@ -1,4 +1,4 @@
-// Copyright 2024 Stepan Morgachev
+// Copyright 2022 UNN-CS
 #include <stdexcept>
 #include "circle.h"
 
