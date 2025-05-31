@@ -1,11 +1,12 @@
-// Copyright 2025 UNN-CS Team
-
+// Copyright 2024 Stepan Morgachev
 #ifndef INCLUDE_TASKS_H_
 #define INCLUDE_TASKS_H_
 
-#include <vector>
+double solvePlanetAndRopeTask(double planetRadius, double radiusIncrement);
 
-double calculatEarthandRope();
-std::vector<double> calculatePool();
+double solveSwimmingPoolTask(double poolRadius,
+                             double pathWidth,
+                             double costOfCoverage,
+                             double fencePrice);
 
-#endif  // INCLUDE_TASKS_H_
+#endif //INCLUDE_TASKS_H_

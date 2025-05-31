@@ -1,53 +1,54 @@
-// Copyright 2022 UNN-CS
-
-#include <cstdint>
-#include <cmath>
+// Copyright 2024 Stepan Morgachev
+#include <stdexcept>
 #include "circle.h"
 
-Circle::Circle(double rad) {
-  if (rad < 0) {
-    throw "Radius less than 0";
-  }
-  radius = rad;
-  ference = 2 * rad * 3.14;
-  area = 3.14 * rad * rad;
+double Circle::getRadius() const {
+    return radius;
 }
 
-void Circle::setRadius(double rad) {
-  if (rad < 0) {
-    throw "Radius less than 0";
-  }
-  radius = rad;
-  ference = 2 * rad * 3.14;
-  area = 3.14 * rad * rad;
+double Circle::getArea() const {
+    return area;
 }
 
-void Circle::setFerence(double fer) {
-  if (fer < 0) {
-    throw "Ference less than 0";
-  }
-  ference = fer;
-  radius = fer / (2 * 3.14);
-  area = 3.14 * radius * radius;
+double Circle::getFerence() const {
+    return ference;
 }
 
-void Circle::setArea(double ar) {
-  if (ar < 0) {
-    throw "Area less than 0";
-  }
-  area = ar;
-  radius = std::sqrt(ar / 3.14);
-  ference = radius * 2 * 3.14;
+void Circle::calculateArea() {
+    area = PI * radius * radius;
 }
 
-double Circle::getRadius() {
-  return radius;
+void Circle::calculateFerence() {
+    ference = 2 * PI * radius;
 }
 
-double Circle::getFerence() {
-  return ference;
+void Circle::setRadius(double radius) {
+    if (radius <= 0.0) {
+        throw std::invalid_argument("radius is must be positive");
+    }
+    Circle::radius = radius;
+    calculateArea();
+    calculateFerence();
 }
 
-double Circle::getArea() {
-  return area;
+void Circle::setArea(double area) {
+    if (area <= 0.0) {
+        throw std::invalid_argument("area is must be positive");
+    }
+    Circle::area = area;
+    radius = sqrt(area / PI);
+    calculateFerence();
+}
+
+void Circle::setFerence(double ference) {
+    if (ference <= 0.0) {
+        throw std::invalid_argument("ference is must be positive");
+    }
+    Circle::ference = ference;
+    radius = ference / (2 * PI);
+    calculateArea();
+}
+
+Circle::Circle(double radius) {
+    setRadius(radius);
 }
